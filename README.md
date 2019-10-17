@@ -37,6 +37,10 @@ PR for two recipes required some sandbox usage.
 
 Example of the `run` command and also serving things (jupyter/RStudio) from a container
 
+## Workflow management systems
+
+Very short examples of using in `snakemake` and `nextflow`
+
 ## Programs requiring GPUs
 
 Example of GPU usage with `tensorflow`
