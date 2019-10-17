@@ -36,3 +36,7 @@ PR for two recipes required some sandbox usage.
 ## `run` and serving applications
 
 Example of the `run` command and also serving things (jupyter/RStudio) from a container
+
+## Programs requiring GPUs
+
+Example of GPU usage with `tensorflow`
