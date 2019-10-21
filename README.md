@@ -6,18 +6,18 @@
 ### tl;dr
 
 A container is a standard unit of software that packages up code and all its
-dependencies so the application runs quickly and reliably from one computing
-environment to another. That includes: files, environment variables, dependencies and
+dependencies, so the application runs quickly and reliably from one computing
+environment to another. That includes files, environment variables, dependencies and
 libraries.
 
-For those who would like more detailed information about what containers are please
+For those who would like more detailed information about what containers are, please
 refer to [this fantastic slide deck from Josep Moscardo][josep-slides].
 
 [josep-slides]: https://github.com/titansmc/singularity-training-2019/raw/master/1.-singularity-training-what-are-containers.odp
 
 ## What can I do with a container?
 
-Jump into simple example of running a container (samtools?)
+In it's most basic form,
 
 ## How do I get a container?
 
