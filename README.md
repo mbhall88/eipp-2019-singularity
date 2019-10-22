@@ -230,7 +230,7 @@ below [here][quay-slides].
 
 * * *
 
-For more details on remote container systems, refer to [my slides][remote-containers-slides] from a one-day 
+For more details on remote container systems, refer to [my slides][remote-containers-slides] from a one-day
 [Singularity course][singularity-course-repo] I was involved in running at EMBL in early 2019.
 
 [remote-containers-slides]: https://slides.com/mbhall88/remote-container-systems
@@ -239,7 +239,25 @@ For more details on remote container systems, refer to [my slides][remote-contai
 
 ### Build locally
 
-Show sample with simple program from binary
+We've talked a lot about how to use containers that others have been kind enough to
+construct for us. But what happens if an image doesn't exist for the software tool you
+want to use? Or if you want to combine multiple programs into a single container? You
+guessed it; we can build containers locally from definition/recipe files.
+
+Rather than reinvent the wheel, please refer to (and work your way through) [these slides][build-slides] from the [Singularity course][singularity-course-repo] I was involved in running at EMBL in early 2019. Once you get to slide titled ["Playing in a sandbox with a shell"][sandbox-slides] you can move on to [Exercise 1](#Exercise-1).
+
+**Note:** As the course was aimed at users of Singularity v3+ you will see the container
+extension `.sif` used. This was a new container file format introduced in v3 that is
+not usable with v2. So as you work through the slides on the machines here at EBI,
+replace all occurrences of `.sif` with `.simg`. For those not from EBI, `.sif` is the
+format you will work with on your cluster though. You will also find all of the recipe
+files in that presentation in the [`recipes/`][recipes-dir] directory of this repository.
+
+[build-slides]: https://slides.com/mbhall88/making-containers#/
+
+[recipes-dir]: https://github.com/mbhall88/eipp-2019-singularity/tree/master/recipes
+
+[sandbox-slides]: https://slides.com/mbhall88/making-containers#/2/4
 
 ## Exercise 1
 
