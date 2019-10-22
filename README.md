@@ -167,7 +167,7 @@ pulled the container above**).
 
 ```sh
 hash="13bc12f41b20001f17e6f8811dc3eeea"
-uri="shub://mbhall88/Singularity_recipes:centrifuge:${hash}"
+uri="shub://mbhall88/Singularity_recipes:centrifuge@${hash}"
 singularity pull --name centrifuge.simg "$uri"
 singularity exec centrifuge.simg centrifuge --help
 ```
@@ -183,6 +183,50 @@ singularity exec centrifuge.simg centrifuge --help
 [centrifuge-shub]: https://singularity-hub.org/containers/5461
 
 [shub-limits]: https://singularityhub.github.io/singularityhub-docs/docs/interact
+
+#### [Singularity Library][library]
+
+This is the official container registry for Singularity. However, all images built on
+this service are Singularity v3+ compatible. At EBI we only have Singularity v2.6, but
+ EMBL Heidelberg's cluster does use Singularity v3+. This service works similarly to Singularity and Docker Hubs, using the scheme `library://` for its URIs.  
+
+One additional feature that Singularity Library has is a [remote builder][remote-builder]. This builder allows you to dump a recipe for a container, it will build the
+container for you, and then you can download it on to your local machine. Very handy
+when working on a computer you do not have `sudo` access on.
+
+See the slides _below_ [this][slides-library] for more information about Singularity
+Library.
+
+[library]: https://cloud.sylabs.io/library
+
+[remote-builder]: https://cloud.sylabs.io/builder
+
+[slides-library]: https://slides.com/mbhall88/remote-container-systems#/2/1
+
+#### [Quay][quay] and [BioContainers][biocontainers]
+
+Quay is a container registry for Docker and [rkt][rkt] containers. We won't talk much
+about this service outside how to use the BioContainers builds hosted on it.  
+
+BioContainers is an open-source and community-driven framework for reproducibility in
+bioinformatics[<sup>1</sup>][biocontainers-paper]. They build and maintain containers for a large suite of bioinformatics
+tools. In particular, any tool that has a [Bioconda][bioconda] recipe automatically has
+a BioContainers image built and stored on Quay.
+
+To see an example of how to find and use these BioContainers images check out the slides
+below [here][quay-slides].
+
+[quay]: https://quay.io/
+
+[rkt]: https://coreos.com/rkt/
+
+[biocontainers]: https://biocontainers.pro/
+
+[biocontainers-paper]: https://doi.org/10.1093/bioinformatics/btx192
+
+[bioconda]: https://bioconda.github.io/
+
+[quay-slides]: https://slides.com/mbhall88/remote-container-systems#/4/1i
 
 ### Build locally
 
