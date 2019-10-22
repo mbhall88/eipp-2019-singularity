@@ -2,6 +2,23 @@
 
 <a href="https://sylabs.io/singularity/"><img src="https://sylabs.io/guides/2.6/admin-guide/_static/logo.png" height="100"/></a> <img src="https://science.sciencemag.org/content/sci/287/5457/1401/F1.medium.gif" height="100"/>
 
+-   [Introduction to containers](#introduction-to-containers)
+    -   [tl;dr](#tldr)
+-   [What can I do with a container?](#what-can-i-do-with-a-container)
+-   [How do I get a container?](#how-do-i-get-a-container)
+    -   [Remote](#remote)
+        -   [Docker Hub](#docker-hub)
+        -   [Singularity Hub](#singularity-hub)
+        -   [Singularity Library](#singularity-library)
+        -   [Quay and BioContainers](#quay-and-biocontainers)
+    -   [Build locally](#build-locally)
+-   [Exercise 1](#exercise-1)
+-   [Sandbox developmenet](#sandbox-developmenet)
+-   [Exercise 2](#exercise-2)
+-   [`run` and serving applications](#run-and-serving-applications)
+-   [Workflow management systems](#workflow-management-systems)
+-   [Programs requiring GPUs](#programs-requiring-gpus)
+
 ## Introduction to containers
 
 ### tl;dr
