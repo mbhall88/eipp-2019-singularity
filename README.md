@@ -132,6 +132,58 @@ singularity exec miniconda3.simg <command>
 
 [singularity-pull]: https://sylabs.io/guides/3.4/user-guide/quick_start.html#download-pre-built-images
 
+#### [Singularity Hub][shub]
+
+Set up and maintained by a collaboration between Stanford University and Singularity,
+Singularity Hub is Singularity's "semi-official" version of Docker Hub. We will dig
+into how to set this up for yourself a little later in [Exercise 1](#Exercise-1).
+
+As with Docker Hub, we can search for containers uploaded by users and then use them in
+the same way. However, it will ask us to log in using GitHub first. Login with your
+GitHub account and then search for [`centrifuge`][centrifuge]. The first result should
+be for [`mbhall88/Singularity_recipes`][shub-recipes] - click on this. This will take
+you to a page listing all of the Singularity containers I maintain in a [recipes repository on GitHub][shub-recipes-github]. Scroll through these and look for the
+[`centrifuge`][centrifuge-shub] one and then click on the green **Complete** button.
+The resulting screen will have the Build Specs (more on this soon) plus a bunch of
+build metrics. Additionally, at the top of this screen, you will see the core piece of
+the URI that we need: `mbhall88/Singularity_recipes:centrifuge`. So to use this container,
+we add the `shub://` scheme to the front.
+
+```sh
+uri="shub://mbhall88/Singularity_recipes:centrifuge"
+singularity pull --name centrifuge.simg "$uri"
+singularity exec centrifuge.simg centrifuge --help
+```
+
+Due to Singularity Hub be generously hosted as no charge by Google Cloud, and also due
+to a recent malicious attack, it is [recommended][shub-limits] to `pull` containers from Singularity and
+then execute them, rather than running directly from the URI.
+
+Again, we can go one step further and specify a particular build of the container we
+want to use. In the **Build Metrics** section, there is a field called 'Version (file hash)'. For reproducibility purposes, it is advisable to use this hash as it makes it
+clear to others who may read your code exactly which container you used. So to pull the
+latest centrifuge container, we would do the following (**don't run this if you already
+pulled the container above**).
+
+```sh
+hash="13bc12f41b20001f17e6f8811dc3eeea"
+uri="shub://mbhall88/Singularity_recipes:centrifuge:${hash}"
+singularity pull --name centrifuge.simg "$uri"
+singularity exec centrifuge.simg centrifuge --help
+```
+
+[shub]: https://singularity-hub.org/
+
+[centrifuge]: https://github.com/DaehwanKimLab/centrifuge
+
+[shub-recipes]: https://singularity-hub.org/collections/685
+
+[shub-recipes-github]: https://github.com/mbhall88/Singularity_recipes
+
+[centrifuge-shub]: https://singularity-hub.org/containers/5461
+
+[shub-limits]: https://singularityhub.github.io/singularityhub-docs/docs/interact
+
 ### Build locally
 
 Show sample with simple program from binary
