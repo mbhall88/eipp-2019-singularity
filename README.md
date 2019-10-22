@@ -228,6 +228,15 @@ below [here][quay-slides].
 
 [quay-slides]: https://slides.com/mbhall88/remote-container-systems#/4/1i
 
+* * *
+
+For more details on remote container systems, refer to [my slides][remote-containers-slides] from a one-day 
+[Singularity course][singularity-course-repo] I was involved in running at EMBL in early 2019.
+
+[remote-containers-slides]: https://slides.com/mbhall88/remote-container-systems
+
+[singularity-course-repo]: https://git.embl.de/grp-bio-it/singularity-training-2019
+
 ### Build locally
 
 Show sample with simple program from binary
