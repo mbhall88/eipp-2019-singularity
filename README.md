@@ -13,7 +13,10 @@
         -   [Quay and BioContainers](#quay-and-biocontainers)
     -   [Build locally](#build-locally)
 -   [Exercise 1](#exercise-1)
--   [Sandbox developmenet](#sandbox-developmenet)
+    -   [Task 1](#task-1)
+    -   [Task 2](#task-2)
+    -   [Task 3](#task-3)
+-   [Sandbox development](#sandbox-development)
 -   [Exercise 2](#exercise-2)
 -   [`run` and serving applications](#run-and-serving-applications)
 -   [Workflow management systems](#workflow-management-systems)
@@ -278,9 +281,28 @@ files in that presentation in the [`recipes/`][recipes-dir] directory of this re
 
 ## Exercise 1
 
-PRs for two recipes (simple programs with binaries)
+Form two groups and complete the following tasks.
 
-## Sandbox developmenet
+### Task 1
+
+[Fork][fork] this repository on GitHub.
+
+[fork]: https://help.github.com/en/github/getting-started-with-github/fork-a-repo
+
+### Task 2
+
+[Enable Singularity Hub][enable-shub] on your fork of this repository.
+
+[enable-shub]: https://slides.com/mbhall88/remote-container-systems#/1/6
+
+### Task 3
+
+Each group should choose one of the following two GitHub issues to close:
+
+-   <https://github.com/mbhall88/eipp-2019-singularity/issues/1>
+-   <https://github.com/mbhall88/eipp-2019-singularity/issues/2>
+
+## Sandbox development
 
 More complicated installations or multiple programs
 
