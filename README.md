@@ -389,6 +389,10 @@ Lastly, we need to test `conda` is executable.
 conda list
 ```
 
+In order to convert these commands into a recipe I generally keep a text file open where
+I paste (successful) commands into as I go so I don't have to search back through my
+shell history later.
+
 [sandbox]: https://sylabs.io/guides/2.6/user-guide/build_a_container.html#creating-writable-images-and-sandbox-directories
 
 [template-recipe]: https://github.com/mbhall88/eipp-2019-singularity/blob/master/recipes/Singularity.template
