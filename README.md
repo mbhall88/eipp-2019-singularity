@@ -407,8 +407,9 @@ shell history later.
 
 Similar to [Exercise 1](#exercise-1), form two groups (can be different groups) and put
 in a pull request each to close the following two issues:
-- link
-- link
+
+-   `flye` recipe: [![GitHub issue/pull request detail](https://img.shields.io/github/issues/detail/state/mbhall88/eipp-2019-singularity/3)](https://github.com/mbhall88/eipp-2019-singularity/issues/3)
+-   `nanopolish` recipe: [![GitHub issue/pull request detail](https://img.shields.io/github/issues/detail/state/mbhall88/eipp-2019-singularity/4)](https://github.com/mbhall88/eipp-2019-singularity/issues/4)
 
 I chose more complicated programs this time so you can get some experience using a sandbox.
 
