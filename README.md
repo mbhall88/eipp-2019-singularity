@@ -299,8 +299,8 @@ Form two groups and complete the following tasks.
 
 Each group should choose one of the following two GitHub issues to close:
 
--   <https://github.com/mbhall88/eipp-2019-singularity/issues/1>
--   <https://github.com/mbhall88/eipp-2019-singularity/issues/2>
+-   `snakemake` recipe: [![GitHub issue/pull request detail](https://img.shields.io/github/issues/detail/state/mbhall88/eipp-2019-singularity/1)](https://github.com/mbhall88/eipp-2019-singularity/issues/1)
+-   `shellcheck` recipe: [![GitHub issue/pull request detail](https://img.shields.io/github/issues/detail/state/mbhall88/eipp-2019-singularity/2)](https://github.com/mbhall88/eipp-2019-singularity/issues/2)
 
 ## Sandbox development
 
@@ -405,7 +405,12 @@ shell history later.
 
 ## Exercise 2
 
-PR for two recipes required some sandbox usage.
+Similar to [Exercise 1](#exercise-1), form two groups (can be different groups) and put
+in a pull request each to close the following two issues:
+- link
+- link
+
+I chose more complicated programs this time so you can get some experience using a sandbox.
 
 ## `run` and serving applications
 
