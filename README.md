@@ -304,7 +304,100 @@ Each group should choose one of the following two GitHub issues to close:
 
 ## Sandbox development
 
-More complicated installations or multiple programs
+During the previous exercise, you may have noticed that errors in your build recipe require you to rerun the build all over again. When installing simple programs, this isn't too costly. However, when we want to build more complicated containers, it becomes time-consuming to rerun the entire build continually. In this section, we will look at how we can use Singularity's [`--sandbox`][sandbox] option to speed up the container recipe development cycle.
+
+So what is a sandbox? Think of it as a directory that mimics the inside of a container. You can then start an interactive shell session in this sandbox and run commands in the same environment that they will run in when building the container. In this way, you can test out what commands you need to run to get your program(s) installed and executing correctly. This massively reduces your turnaround time for creating containers. In addition, as we make the sandbox writeable, any changes we make will stay saved.
+
+Let's get into the sandbox and play!
+
+Create a new directory where we will do our sandbox development.
+
+```sh
+mkdir sandbox-dev
+cd sandbox-dev
+```
+
+Next, we will use the [template recipe][template-recipe] in this repository to build our sandbox from.
+
+```sh
+sudo singularity build --sandbox playground ../recipes/Singularity.template
+```
+
+You should now see a directory called `playground`. I've named the sandbox `playground`, but you can name it whatever you want.
+
+Now we will start an interactive shell within the sandbox/container image.
+
+```sh
+sudo singularity shell --writable playground
+```
+
+_Note: If you don't use [`--writable`][writable] you won't be able to install anything or do anything that changes the size of the container._
+
+You should now see the prompt change to something like
+
+```sh
+Singularity playground:~>
+```
+
+**IMPORTANT:  
+The directory `/root` from your local machine will be mounted in the sandbox. So anything you do in the sandbox in that directory will also be reflected in the `/root` directory locally.
+Ensure you move out of `/root` within the sandbox and do all of your work there. I tend to use `/usr/local`, but you could create a new directory altogether (but outside `/root`) e.g. `/sandbox`.**
+
+```sh
+cd /usr/local
+```
+
+Now we'll try and [install `conda`][install-conda] inside the sandbox.
+
+```sh
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda3.sh
+```
+
+This will give us: `bash: wget: command not found`. A perfect example of why these sandboxes
+are so useful. The OS installation is _very_ minimal and doesn't include a lot of programs.  
+
+Let's install `wget` in our sandbox and try again.
+
+```sh
+apt install -y wget
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda3.sh
+```
+
+Now we'll install `conda`, specifying the prefix (`-p`) as a directory in `/usr/local`
+called `miniconda`.
+
+```sh
+bash miniconda3.sh -b -p $(pwd)/miniconda
+```
+
+In order to run `conda` now, we need to ensure it's binary is in our `PATH`.
+
+```sh
+export PATH="$(realpath miniconda/bin):${PATH}"
+```
+
+_Remember from the [`%environment` slide][env-slide] that when writing the recipe for
+this `conda` installation we would need to write the `export` line as:_
+
+```sh
+echo "export PATH=$(realpath miniconda/bin):${PATH}" >> "$SINGULARITY_ENVIRONMENT"
+```
+
+Lastly, we need to test `conda` is executable.
+
+```sh
+conda list
+```
+
+[sandbox]: https://sylabs.io/guides/2.6/user-guide/build_a_container.html#creating-writable-images-and-sandbox-directories
+
+[template-recipe]: https://github.com/mbhall88/eipp-2019-singularity/blob/master/recipes/Singularity.template
+
+[writable]: https://sylabs.io/guides/2.6/user-guide/build_a_container.html#writable
+
+[install-conda]: https://conda.io/projects/conda/en/latest/user-guide/install/macos.html#install-macos-silent
+
+[env-slide]: https://slides.com/mbhall88/making-containers#/1/7
 
 ## Exercise 2
 
