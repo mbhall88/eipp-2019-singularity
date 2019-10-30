@@ -19,6 +19,8 @@
 -   [Sandbox development](#sandbox-development)
 -   [Exercise 2](#exercise-2)
 -   [`run` and serving applications](#run-and-serving-applications)
+    -   [`singularity run`](#singularity-run)
+    -   [Serving applications](#serving-applications)
 -   [Workflow management systems](#workflow-management-systems)
 -   [Programs requiring GPUs](#programs-requiring-gpus)
 
@@ -415,7 +417,73 @@ I chose more complicated programs this time so you can get some experience using
 
 ## `run` and serving applications
 
-Example of the `run` command and also serving things (jupyter/RStudio) from a container
+### `singularity run`
+
+The [`run`][run-docs] directive will execute the [`%runscript`][runscript-slides] and
+pass along all arguments to this script. The `run` directive is handy for when you want
+to automate some common tasks using the programs installed within the container and be
+able to handle user options. Refer to [the slide on `%runscript`][runscript-slides],
+from the earlier section on [buiding containers locally](#build-locally), for
+an example of using `singularity run`.  
+
+[run-docs]: https://sylabs.io/guides/2.6/user-guide/container_recipes.html#runscript
+
+[runscript-slides]: https://slides.com/mbhall88/making-containers#/1/10
+
+### Serving applications
+
+It is also possible to serve applications through a port from a container. As an example
+we will build a container to run a [`jupyter notebook`][jupyter] that we can access on
+our local machine.
+
+The recipe to do this can be found in the `recipe/` directory as [`Singularity.jupyter`][jupyter-recipe].
+Of particular interest for this example, see the `%runscript` section.
+
+```sh
+%runscript
+    PORT="${1:-8888}"
+    echo "Starting notebook..."
+    echo "Open browser to localhost:${PORT}"
+    exec /usr/local/bin/jupyter notebook  --ip='*' --port="$PORT" --no-browser
+```
+
+We take the first option passed by the user and store it in a variable `PORT`, or use `8888`
+if nothing is given. We print some logging to the screen with `echo` and then start
+a `jupyter` session, passing the `PORT` to `jupyter`.  
+
+Let's build this image and then fire it up.
+
+```sh
+sudo singularity build jupyter.simg recipes/Singularity.jupyter
+# we will use the default port 8888
+singularity run jupyter.simg  
+```
+
+You should get some output from `jupyter` indicating it has started running the notebook
+and providing a location, which should look something like:
+
+```
+[I 11:40:28.948 NotebookApp] Serving notebooks from local directory: /home/vagrant/container-dev
+[I 11:40:28.949 NotebookApp] The Jupyter Notebook is running at:
+[I 11:40:28.949 NotebookApp] http://dev-vm:8888/?token=c8fe88de778120e5ccd42850d6d13712e27b125b0481d5b0
+[I 11:40:28.949 NotebookApp]  or http://127.0.0.1:8888/?token=c8fe88de778120e5ccd42850d6d13712e27b125b0481d5b0
+[I 11:40:28.949 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 11:40:28.953 NotebookApp]
+```
+
+Copy the URL (either one), and paste it into a web browser. You should now see the home
+page for the notebook. Select the example notebook at `notebooks/plot.ipynb`.
+
+Run the two cells in the notebook, and you should see some toy data plotted.
+
+This is quite a simple use case for serving applications. You can do far more complicated
+things like [running an RStudio server][rstudio] from a container and access it locally.
+
+[jupyter]: https://jupyter.org/
+
+[jupyter-recipe]: https://github.com/mbhall88/eipp-2019-singularity/blob/master/recipes/Singularity.jupyter
+
+[rstudio]: https://divingintogeneticsandgenomics.rbind.io/post/run-rstudio-server-with-singularity-on-hpc/
 
 ## Workflow management systems
 
