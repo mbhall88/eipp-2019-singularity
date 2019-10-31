@@ -487,7 +487,16 @@ things like [running an RStudio server][rstudio] from a container and access it 
 
 ## Workflow management systems
 
-Very short examples of using in `snakemake` and `nextflow`
+Containers and workflow management systems (WMSs), such as `snakemake` and [`nextflow`][nextflow],
+are a match made in heaven. Containers add a crucial layer of reproducibility to these systems.  
+
+Though this is not a project to teach you how to use WMSs, I would
+encourage you to take a look at [this short slide deck][wms-slides] from the Singularity course I ran
+as it shows you how easy it is to integrate Singularity containers into WMSs.
+
+[nextflow]: https://www.nextflow.io/
+
+[wms-slides]: https://slides.com/mbhall88/singularity-and-workflow-management-systems#/
 
 ## Programs requiring GPUs
 
