@@ -23,6 +23,7 @@
     -   [Serving applications](#serving-applications)
 -   [Workflow management systems](#workflow-management-systems)
 -   [Programs requiring GPUs](#programs-requiring-gpus)
+-   [Bonus](#bonus)
 
 ## Introduction to containers
 
@@ -500,4 +501,19 @@ as it shows you how easy it is to integrate Singularity containers into WMSs.
 
 ## Programs requiring GPUs
 
-Example of GPU usage with `tensorflow`
+Singularity also provides the ability to utilise GPU cards, without needing to install
+the GPU drivers into your container. Currently, it can only use NVIDIA GPUs. To allow a
+container to use the local GPU card and drivers all you need to do it pass the
+[`--nv`][gpu] option. For example, to get a python shell with the GPU version of `tensorflow`
+available, you would run the following (on a machine with an NVIDIA GPU).
+
+```sh
+singularity exec --nv docker://tensorflow/tensorflow:latest-gpu python
+```
+
+[gpu]: https://sylabs.io/guides/2.6/user-guide/appendix.html#a-gpu-example
+
+## Bonus
+
+If you have gotten to this point, then have a go at creating a container for a piece of
+software you have had difficulties installing in the past.
