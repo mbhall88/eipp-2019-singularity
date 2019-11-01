@@ -130,17 +130,17 @@ command and optionally specify a name.
 singularity pull docker://continuumio/miniconda3:4.6.14
 ```
 
-The above command will pull the container into the current directory and name it `miniconda3-4.6.14.simg`. If we wanted to call it instead `miniconda3.simg` we would use the `--name` argument
+The above command will pull the container into the current directory and name it `miniconda3-4.6.14.sif`. If we wanted to call it instead `miniconda3.sif` we would use the `--name` argument
 
 ```sh
-singularity pull --name miniconda3.simg docker://continuumio/miniconda3:4.6.14
+singularity pull --name miniconda3.sif docker://continuumio/miniconda3:4.6.14
 ```
 
 When we want to use this image again in the future, rather than specifying the URI we
 just point Singularity at our local copy
 
 ```sh
-singularity exec miniconda3.simg <command>
+singularity exec miniconda3.sif <command>
 ```
 
 [uri]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
@@ -174,8 +174,8 @@ we add the `shub://` scheme to the front.
 
 ```sh
 uri="shub://mbhall88/Singularity_recipes:centrifuge"
-singularity pull --name centrifuge.simg "$uri"
-singularity exec centrifuge.simg centrifuge --help
+singularity pull --name centrifuge.sif "$uri"
+singularity exec centrifuge.sif centrifuge --help
 ```
 
 Due to Singularity Hub be generously hosted as no charge by Google Cloud, and also due
@@ -191,8 +191,8 @@ pulled the container above**).
 ```sh
 hash="13bc12f41b20001f17e6f8811dc3eeea"
 uri="shub://mbhall88/Singularity_recipes:centrifuge@${hash}"
-singularity pull --name centrifuge.simg "$uri"
-singularity exec centrifuge.simg centrifuge --help
+singularity pull --name centrifuge.sif "$uri"
+singularity exec centrifuge.sif centrifuge --help
 ```
 
 [shub]: https://singularity-hub.org/
@@ -271,9 +271,9 @@ Rather than reinvent the wheel, please refer to (and work your way through) [the
 
 **Note:** As the course was aimed at users of Singularity v3+ you will see the container
 extension `.sif` used. This was a new container file format introduced in v3 that is
-not usable with v2. So as you work through the slides on the machines here at EBI,
-replace all occurrences of `.sif` with `.simg`. For those not from EBI, `.sif` is the
-format you will work with on your cluster though. You will also find all of the recipe
+not usable with v2. The container extension for v2 was `.simg`, so you may see this sometimes.
+For instance, the cluster at EBI is still on v2 (the training VMs are v3). For those using
+the Heidelberg cluster, your cluster has v3. You will also find all of the recipe
 files in that presentation in the [`recipes/`][recipes-dir] directory of this repository.
 
 [build-slides]: https://slides.com/mbhall88/making-containers#/
@@ -396,11 +396,11 @@ In order to convert these commands into a recipe I generally keep a text file op
 I paste (successful) commands into as I go so I don't have to search back through my
 shell history later.
 
-[sandbox]: https://sylabs.io/guides/2.6/user-guide/build_a_container.html#creating-writable-images-and-sandbox-directories
+[sandbox]: https://sylabs.io/guides/3.4/user-guide/build_a_container.html#creating-writable-images-and-sandbox-directories
 
 [template-recipe]: https://github.com/mbhall88/eipp-2019-singularity/blob/master/recipes/Singularity.template
 
-[writable]: https://sylabs.io/guides/2.6/user-guide/build_a_container.html#writable
+[writable]: https://sylabs.io/guides/3.4/user-guide/build_a_container.html#writable
 
 [install-conda]: https://conda.io/projects/conda/en/latest/user-guide/install/macos.html#install-macos-silent
 
@@ -427,7 +427,7 @@ able to handle user options. Refer to [the slide on `%runscript`][runscript-slid
 from the earlier section on [buiding containers locally](#build-locally), for
 an example of using `singularity run`.  
 
-[run-docs]: https://sylabs.io/guides/2.6/user-guide/container_recipes.html#runscript
+[run-docs]: https://sylabs.io/guides/3.4/user-guide/cli/singularity_run.html
 
 [runscript-slides]: https://slides.com/mbhall88/making-containers#/1/10
 
@@ -455,9 +455,9 @@ a `jupyter` session, passing the `PORT` to `jupyter`.
 Let's build this image and then fire it up.
 
 ```sh
-sudo singularity build jupyter.simg recipes/Singularity.jupyter
+sudo singularity build jupyter.sif recipes/Singularity.jupyter
 # we will use the default port 8888
-singularity run jupyter.simg  
+singularity run jupyter.sif  
 ```
 
 You should get some output from `jupyter` indicating it has started running the notebook
