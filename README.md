@@ -273,7 +273,8 @@ Rather than reinvent the wheel, please refer to (and work your way through) [the
 extension `.sif` used. This was a new container file format introduced in v3 that is
 not usable with v2. The container extension for v2 was `.simg`, so you may see this sometimes.
 For instance, the cluster at EBI is still on v2 (the training VMs are v3). For those using
-the Heidelberg cluster, your cluster has v3. You will also find all of the recipe
+the Heidelberg cluster, your cluster has v3. Singularity v2 containers, with the `.simg` extension,
+can be executed by Singularity v3. You will also find all of the recipe
 files in that presentation in the [`recipes/`][recipes-dir] directory of this repository.
 
 [build-slides]: https://slides.com/mbhall88/making-containers#/
