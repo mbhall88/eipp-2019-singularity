@@ -517,4 +517,8 @@ singularity exec --nv docker://tensorflow/tensorflow:latest-gpu python
 ## Bonus
 
 If you have gotten to this point, then have a go at creating a container for a piece of
-software you have had difficulties installing in the past.
+software you have had difficulties installing in the past. Alternatively, you could try 
+and reduce the size of the containers we have already produced by using [Alpine][alpine] as the 
+base OS.
+
+[alpine]: https://www.alpinelinux.org/
