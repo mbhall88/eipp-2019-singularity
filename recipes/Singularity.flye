@@ -19,9 +19,5 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     
 %test
     cd /Flye
-    python3 flye/tests/test_toy.py > flye/tests/test_toy.out
-    if grep -q "TEST SUCCESSFULL" flye/tests/test_toy.out; then
-        echo flye successfully installed
-    else
-        echo flye not successfully installed
-    fi
+    python3 flye/tests/test_toy.py || {echo flye test failed; exit 1}
+    echo flye test successful
