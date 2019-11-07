@@ -1,0 +1,15 @@
+Bootstrap: debootstrap
+OSVersion: bionic
+MirrorURL: http://us.archive.ubuntu.com/ubuntu/
+
+%post
+    apt update
+    apt install -y software-properties-common
+    apt-add-repository universe
+    apt update
+    git clone https://github.com/fenderglass/Flye
+    cd Flye
+    python setup.py install
+    
+#%test
+#    python flye/tests/test_toy.py >/dev/null 2>&1 || { echo >&2 "I require flye but it's not installed.  Aborting."; exit 1; }
