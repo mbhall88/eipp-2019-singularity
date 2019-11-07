@@ -7,11 +7,11 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     apt install -y software-properties-common
     apt-add-repository universe
     apt update
-    sudo apt-get update
-    sudo apt-get install -y git
+    apt-get update
+    apt-get install -y git
     git clone https://github.com/fenderglass/Flye
-    cd Flye
-    python setup.py install
+    cd Flye || exit 1
+    python3 setup.py install
     
 #%test
 #    python flye/tests/test_toy.py >/dev/null 2>&1 || { echo >&2 "I require flye but it's not installed.  Aborting."; exit 1; }
