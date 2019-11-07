@@ -21,9 +21,10 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     # wget -O - "$URL" | tar xzf - 
     # cd Flye || exit 1
     python3 setup.py install
-    echo "export PATH=$(pwd):$PATH" >> $SINGULARITY_ENVIRONMENT
+    echo "export PATH=$(realpath bin):$PATH" >> $SINGULARITY_ENVIRONMENT
     
 %test
     cd /Flye
-    python3 flye/tests/test_toy.py || {echo flye test failed; exit 1}
+    export PATH=$(realpath bin):$PATH
+    python3 flye/tests/test_toy.py || { echo flye test failed; exit 1; }
     echo flye test successful
