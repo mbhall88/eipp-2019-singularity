@@ -7,6 +7,8 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     apt install -y software-properties-common
     apt-add-repository universe
     apt update
+    sudo apt-get update
+    sudo apt-get install git
     git clone https://github.com/fenderglass/Flye
     cd Flye
     python setup.py install
