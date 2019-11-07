@@ -11,6 +11,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     apt-get install -y git
     apt install -y python3-pip
     pip3 install setuptools
+    apt-get install -y libz-dev
     git clone https://github.com/fenderglass/Flye
     cd Flye || exit 1
     python3 setup.py install
